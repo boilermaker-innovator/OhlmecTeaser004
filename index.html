@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rope Access | Ohlmec</title>
+    <style>
+        body{font-family:Arial,sans-serif;max-width:600px;margin:20px auto;padding:20px;}
+        .job-listing{background-color:white;border-radius:12px;box-shadow:0 4px 8px rgba(0,0,0,0.1);overflow:hidden;border:3px solid #0066cc;}
+        .job-header{background:#0066cc;color:white;padding:15px;text-align:center;position:relative;display:flex;align-items:center;justify-content:space-between;}
+        .logo-placeholder{width:50px;height:50px;background-color:white;border-radius:50%;display:flex;justify-content:center;align-items:center;font-weight:bold;color:#0066cc;font-size:12px;}
+        .job-title{flex-grow:1;text-align:left;margin-left:15px;}
+        .job-title h1{margin:0 0 3px 0;font-size:20px;}
+        .job-title p{margin:0;font-size:14px;}
+        .content{padding:15px 15px 5px;position:relative;overflow:hidden;min-height:130px;}
+        .teaser-section{display:none;animation:fadeEffect 0.3s;}
+        .teaser-section.active{display:block;}
+        .teaser-section h3{margin-top:0;margin-bottom:8px;font-size:18px;}
+        .teaser-section ul{margin:0;padding-left:20px;}
+        .teaser-section li{margin-bottom:4px;}
+        .nav-container{display:flex;align-items:center;justify-content:center;padding:2px 0;}
+        .nav-dots{text-align:center;margin:0 10px;}
+        .dot{height:8px;width:8px;background-color:#bbb;border-radius:50%;display:inline-block;margin:0 3px;cursor:pointer;}
+        .dot.active{background-color:#0066cc;}
+        .arrow{background-color:transparent;color:#0066cc;padding:2px 8px;cursor:pointer;user-select:none;border:none;font-size:20px;font-weight:bold;}
+        .apply-button{display:block;width:100%;padding:10px;background-color:#ff6600;color:white;text-align:center;text-decoration:none;font-weight:bold;border:none;cursor:pointer;font-size:16px;}
+        .apply-button:hover{background-color:#ff8533;}
+        .full-ad-toggle{display:flex;align-items:center;justify-content:flex-end;padding:3px 15px;background-color:#f0f8ff;}
+        .full-ad-toggle label{margin-left:5px;font-size:14px;}
+        .full-job-ad{display:none;padding:15px;}
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+    <div class="job-listing">
+        <div class="job-header">
+            <div class="logo-placeholder">Ohlmec</div>
+            <div class="job-title">
+                <h1>Rope Access</h1>
+                <p>Perth, Western Australia</p>
+            </div>
+        </div>
+        <div class="full-ad-toggle">
+            <input type="checkbox" id="fullAdToggle" onclick="toggleFullAd()">
+            <label for="fullAdToggle">Show Full Job Ad</label>
+        </div>
+        <div id="jobTeaser" class="content">
+            <div class="teaser-section active" id="section1">
+                <h3>Overview</h3>
+                <ul>
+                    <li>Join our specialist Vertical Services division</li>
+                    <li>Work across Australia's largest mine sites</li>
+                    <li>Conduct fixed plant mechanical works</li>
+                </ul>
+            </div>
+            <div class="teaser-section" id="section2">
+                <h3>Requirements</h3>
+                <ul>
+                    <li>IRATA Level 1-3 Certification AND be a Boilermaker OR</li>
+                    <li>IRATA Level 3 Certification (without being a Boilermaker)</li>
+                    <li>First Aid Certificate (required for Level 3 only)</li>
+                </ul>
+            </div>
+            <div class="teaser-section" id="section3">
+                <h3>Benefits</h3>
+                <ul>
+                    <li>$66.00 to $90.00 per hour, plus superannuation</li>
+                    <li>Ongoing work with Australia's biggest mining producers</li>
+                    <li>Career Progression opportunities</li>
+                </ul>
+            </div>
+        </div>
+        <div class="nav-container">
+            <button class="arrow" onclick="changeSection(-1)">&#10094;</button>
+            <div class="nav-dots">
+                <span class="dot active" onclick="showSection(1)"></span>
+                <span class="dot" onclick="showSection(2)"></span>
+                <span class="dot" onclick="showSection(3)"></span>
+            </div>
+            <button class="arrow" onclick="changeSection(1)">&#10095;</button>
+        </div>
+        <div id="fullJobAd" class="full-job-ad">
+            <h3>Full Job Description</h3>
+            <h4>Role Overview</h4>
+            <ul>
+                <li>Join our specialist Vertical Services division</li>
+                <li>Work across Australia's largest mines sites in the Pilbara and Goldfields</li>
+                <li>Conduct fixed plant mechanical works on maintenance shutdowns and projects</li>
+                <li>Opportunity for Rope Access Boilermakers (Level 1-3) and Rope Access Technicians Level 3</li>
+                <li>Experience working on fixed plant maintenance within the mining industry is ideal</li>
+            </ul>
+            <h4>Requirements</h4>
+            <ul>
+                <li>IRATA Level 1-3 Certification AND be a Boilermaker OR</li>
+                <li>IRATA Level 3 Certification (without being a Boilermaker)</li>
+                <li>First Aid Certificate (required for Level 3 only)</li>
+                <li>Construction White Card</li>
+                <li>Working at Heights</li>
+                <li>Confined Space</li>
+                <li>Australian work rights</li>
+            </ul>
+            <h4>Benefits</h4>
+            <ul>
+                <li>$66.00 to $90.00 per hour, plus superannuation, paid fortnightly</li>
+                <li>Ongoing work with Australia's biggest mining producers</li>
+                <li>Flexibility to self-manage your work schedule</li>
+                <li>Training opportunities with our in-house RTO</li>
+                <li>Career Progression opportunities</li>
+                <li>Ability to pass a pre-employment medical and ongoing drug & alcohol screens</li>
+            </ul>
+        </div>
+        <a href="https://www.ohlmec.com.au/careers/" class="apply-button" target="_blank">Apply Now</a>
+    </div>
+
+    <script>
+        let currentSection = 1;
+        let autoPlayInterval;
+
+        function showSection(n) {
+            let sections = document.getElementsByClassName("teaser-section");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > sections.length) {currentSection = 1}
+            if (n < 1) {currentSection = sections.length}
+            
+            for (let i = 0; i < sections.length; i++) {
+                sections[i].classList.remove("active");
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            sections[currentSection-1].classList.add("active");
+            dots[currentSection-1].classList.add("active");
+        }
+
+        function changeSection(n) {
+            showSection(currentSection += n);
+            resetAutoPlay();
+        }
+
+        function toggleFullAd() {
+            const jobTeaser = document.getElementById('jobTeaser');
+            const fullJobAd = document.getElementById('fullJobAd');
+            const navContainer = document.querySelector('.nav-container');
+            const isChecked = document.getElementById('fullAdToggle').checked;
+            
+            if (isChecked) {
+                jobTeaser.style.display = 'none';
+                fullJobAd.style.display = 'block';
+                navContainer.style.display = 'none';
+                stopAutoPlay();
+            } else {
+                jobTeaser.style.display = 'block';
+                fullJobAd.style.display = 'none';
+                navContainer.style.display = 'flex';
+                startAutoPlay();
+            }
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                changeSection(1);
+            }, 3000); // Change section every 3 seconds
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        function resetAutoPlay() {
+            stopAutoPlay();
+            startAutoPlay();
+        }
+
+        // Touch swipe functionality
+        let touchstartX = 0;
+        let touchendX = 0;
+        
+        const slider = document.querySelector('.content');
+
+        slider.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+            stopAutoPlay();
+        });
+
+        slider.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startAutoPlay();
+        });
+
+        function handleSwipe() {
+            if (touchendX < touchstartX) changeSection(1);
+            if (touchendX > touchstartX) changeSection(-1);
+        }
+
+        // Start auto-play when the page loads
+        window.onload = startAutoPlay;
+    </script>
+</body>
+</html>
